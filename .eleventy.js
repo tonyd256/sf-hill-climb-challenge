@@ -6,7 +6,9 @@ module.exports = config => {
   config.addPassthroughCopy("assets");
 
   renderSass();
-  fs.watch(path.dirname("_sass/agency.scss"), renderSass);
+  if (!process.env.NETLIFY) {
+    fs.watch(path.dirname("_sass/agency.scss"), renderSass);
+  }
 };
 
 function renderSass() {
