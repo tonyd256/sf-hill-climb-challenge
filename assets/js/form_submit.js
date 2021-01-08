@@ -12,7 +12,7 @@ $(function() {
 
       grecaptcha.ready(function() {
         grecaptcha.execute('6LfxHiYaAAAAANF3jXUmfC9M-SB7bhL0Mts7BQ_P', {action: 'submit'}).then(function(token) {
-          var url = "https://script.google.com/macros/s/AKfycbx3LUU2ujby8cfkc45GyrxHwYJUX2-Ol14Kjtk9NaygVFM57RPO/exec";
+          var url = "https://script.google.com/macros/s/AKfycbywSwe_b9zM5_V9hdlf6lPYXUwgjZyhjtMKBdrKIh4Fkf-NYhSD/exec";
           const data = new FormData($form[0]);
           data.append('token', token);
 

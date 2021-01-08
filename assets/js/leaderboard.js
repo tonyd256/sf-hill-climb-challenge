@@ -1,6 +1,7 @@
 $(function() {
+  return;
   $.ajax({
-    url: 'https://script.google.com/macros/s/AKfycbx3LUU2ujby8cfkc45GyrxHwYJUX2-Ol14Kjtk9NaygVFM57RPO/exec',
+    url: 'https://script.google.com/macros/s/AKfycbywSwe_b9zM5_V9hdlf6lPYXUwgjZyhjtMKBdrKIh4Fkf-NYhSD/exec?item=results',
     dataType: 'json',
     cache: false,
     success: function (res) {
