@@ -1,0 +1,74 @@
+<!-- Submit -->
+  <section class="page-section" id="form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Submit a Hill Climb</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <form id="submissionForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input name="Name" class="form-control" id="name" type="text" placeholder="Name*" required="required" data-validation-required-message="Please enter your name.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input name="Email" class="form-control" id="email" type="email" placeholder="Email*" required="required" data-validation-required-message="Please enter your email address.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <select name="Hill" class="form-control" id="hill" required="required" data-validation-required-message="Please select a hill.">
+                    <option value="">Select a hill</option>
+                  </select>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="number" placeholder="Number of repetitions*" name="Reps" class="form-control" id="reps" required="required" data-validation-required-message="Please enter the number of repetitions.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input name="Activity Date" class="form-control" id="activity-date" type="text" placeholder="Activity Date (YYYY-MM-DD)*" required="required" data-validation-required-message="Please enter the date of the activity.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input name="Link" class="form-control" id="link" type="text" placeholder="Link to your activity">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <textarea name="Comments" class="form-control" id="comments" placeholder="Comments, concerns, shit talk, etc."></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="clearfix"></div>
+              <div class="col-lg-12 text-center">
+                <div id="success"></div>
+                <button id="submitFormButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Submit Hill</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End Submit -->

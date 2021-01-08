@@ -1,0 +1,15 @@
+{
+  "name": "battle-of-the-hills",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tony DiPasquale <anthony.r.dipasquale@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx eleventy --serve"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "sass": "^1.32.0"
+  }
+}
