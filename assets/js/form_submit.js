@@ -12,9 +12,11 @@ $(function() {
 
       grecaptcha.ready(function() {
         grecaptcha.execute('6LfxHiYaAAAAANF3jXUmfC9M-SB7bhL0Mts7BQ_P', {action: 'submit'}).then(function(token) {
+          console.log(token);
           var url = "https://script.google.com/macros/s/AKfycbywSwe_b9zM5_V9hdlf6lPYXUwgjZyhjtMKBdrKIh4Fkf-NYhSD/exec";
           const data = new FormData($form[0]);
           data.append('token', token);
+          console.log(data);
 
           $.ajax({
             url: url,
@@ -25,7 +27,8 @@ $(function() {
             processData: false,
             cache: false,
 
-            success: function() {
+            success: function(d) {
+              console.log(d);
               // Success message
               $('#success').html("<div class='alert alert-success'>");
               $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -38,7 +41,8 @@ $(function() {
               $('#submissionForm').trigger("reset");
             },
 
-            error: function() {
+            error: function(e) {
+              console.error(e);
               // Fail message
               $('#success').html("<div class='alert alert-danger'>");
               $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
