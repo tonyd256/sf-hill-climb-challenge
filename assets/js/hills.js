@@ -17,9 +17,20 @@ $(function() {
 
           var marker = L.marker([hill.lat, hill.lng]).addTo(map);
           marker.bindPopup("<b>"+hill.name+"</b><br>Length: "+hill.length+"mi Vert: "+hill.vert+"ft");
-          L.geoJSON(JSON.parse(hill.geojson)).addTo(map);
         }
       });
+    },
+    error: function (req, status, e) {
+      console.error(e);
+    }
+  });
+
+  $.ajax({
+    url: '/assets/hills.json',
+    dataType: 'json',
+    cache: false,
+    success: function (res) {
+      L.geoJSON(res).addTo(map);
     },
     error: function (req, status, e) {
       console.error(e);
