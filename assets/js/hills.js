@@ -11,12 +11,14 @@ $(function() {
     dataType: 'json',
     cache: false,
     success: function (res) {
+      const hillTable = $('#hill-table tbody');
       res.data.forEach( function(hill) {
         if (hill.lat && hill.lng) {
           $('#hill').append('<option value="'+hill.name+'">'+hill.name+'</option>');
 
           var marker = L.marker([hill.lat, hill.lng]).addTo(map);
-          marker.bindPopup("<b>"+hill.name+"</b><br>Length: "+hill.length+"mi Vert: "+hill.vert+"ft");
+          marker.bindPopup("<b>"+hill.name+"</b><br>"+hill.description+"<br>Length: "+hill.length+"mi Vert: "+hill.vert+"ft");
+          hillTable.append("<tr><td>"+hill.name+"</td><td colspan=\"3\">"+hill.description+"</td><td class=\"text-right\">"+hill.length+"</td><td class=\"text-right\">"+hill.vert+"</td></tr>");
         }
       });
     },
