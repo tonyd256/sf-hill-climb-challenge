@@ -18,6 +18,7 @@ $(function() {
     cache: false,
     success: function (res) {
       localStorage.hills = JSON.stringify(res.data);
+      addHillMarkers(res.data);
     },
     error: function (req, status, e) {
       console.error(e);
