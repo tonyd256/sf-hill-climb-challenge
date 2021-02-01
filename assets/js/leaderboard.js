@@ -93,6 +93,23 @@ $(function() {
         }
       }
     });
+
+    const teamTable = $('#team-table tbody');
+    const teamRosters = _.groupBy(teams, 'team');
+    const totalRows = _.max(_.map(teamRosters, function (t) { return t.length; }));
+
+    for (var i = 0; i < totalRows; i++) {
+      var row = '<tr>';
+      ['Ali', 'Collin', 'Shardul', 'Tony'].forEach(function (leader) {
+        if (teamRosters[leader][i]) {
+          row += '<td>'+teamRosters[leader][i].name+'</td>';
+        } else {
+          row += '<td></td>';
+        }
+      });
+      row += '</tr>';
+      teamTable.append(row);
+    }
   }, function (req, status, e) {
     console.error(e || req || 'Unknown Error Occurred');
   });
