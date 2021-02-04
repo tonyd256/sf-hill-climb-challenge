@@ -7,7 +7,7 @@ section#form {
   .section-heading {
     color: $white;
   }
-  .form-group {
+  .form-group, .form-check {
     margin-bottom: 25px;
     input,
     textarea,
@@ -23,6 +23,11 @@ section#form {
     }
     textarea.form-control {
       height: 248px;
+    }
+    label {
+      @include heading-font;
+      font-weight: 700;
+      color: $gray-400;
     }
   }
   .form-control:focus {

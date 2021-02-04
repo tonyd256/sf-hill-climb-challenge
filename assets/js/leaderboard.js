@@ -41,12 +41,14 @@ $(function() {
     });
     const teamVert = _.mapValues(teamResults, function (team) {
       return _.reduce(team, function (accum, v) {
-        const vert = _.find(hills, { name: v.hill }).vert;
+        const hill = _.find(hills, { name: v.hill });
+        const vert = hill ? hill.vert : 0;
+        if (!hill) console.error("Couldn't find hill "+v.hill);
         return accum + v.reps * vert;
       }, 0);
     });
 
-    const teamLabels = Object.keys(teamVert);
+    const teamLabels = ["Ali", "Collin", "Shardul", "Tony"];
     const teamValues = _.map(teamLabels, function (l) { return teamVert[l]; });
     const ctx = $('#team-leaderboard');
     const chart = new Chart(ctx, {
@@ -86,7 +88,15 @@ $(function() {
             ticks: {
               beginAtZero: true,
               callback: function(value, index, values) {
-                return value >= 1000 ? (value/1000).toFixed(2) + 'k' : value;
+                if (value >= 1000000) {
+                  return (value/1000000).toFixed(2) + 'MM';
+                } else if (value >= 10000) {
+                  return Math.round(value/1000) + 'k';
+                } else if (value >= 1000) {
+                  return (value/1000).toFixed(1) + 'k';
+                } else {
+                  return value;
+                }
               }
             }
           }]

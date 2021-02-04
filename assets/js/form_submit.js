@@ -1,4 +1,28 @@
+function fillFormDefaults() {
+  if (localStorage.my_name && localStorage.my_email) {
+    $('#name').val(localStorage.my_name);
+    $('#email').val(localStorage.my_email);
+    $('#forget-section').show();
+    $('#remember-section').hide();
+  } else {
+    $('#forget-section').hide();
+    $('#remember-section').show();
+  }
+}
+
 $(function() {
+
+  fillFormDefaults();
+
+  $('#forget').click( function (e) {
+    e.preventDefault();
+    delete localStorage.my_name;
+    delete localStorage.my_email;
+    $('#name').val('');
+    $('#email').val('');
+    $('#forget-section').hide();
+    $('#remember-section').show();
+  });
 
   $("#submissionForm input,#submissionForm select").jqBootstrapValidation({
     preventSubmit: true,
@@ -40,8 +64,15 @@ $(function() {
                 .append("<strong>"+message+"</strong>");
               $('#success > .alert-success')
                 .append('</div>');
+
+              if ($('#remember').is(':checked')) {
+                localStorage.my_name = data.get('Name');
+                localStorage.my_email = data.get('Email');
+              }
+
               //clear all fields
               $('#submissionForm').trigger("reset");
+              fillFormDefaults();
             },
 
             error: function(e) {

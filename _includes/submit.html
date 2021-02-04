@@ -40,22 +40,28 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-12">
                 <div class="form-group">
-                  <input name="Activity Date" class="form-control" id="activity-date" type="text" placeholder="Activity Date (YYYY-MM-DD)*" required="required" data-validation-required-message="Please enter the date of the activity.">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input name="Link" class="form-control" id="link" type="text" placeholder="Link to your activity">
+                  <input name="Link" class="form-control" id="link" type="text" placeholder="Link to your activity (optional)">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                  <textarea name="Comments" class="form-control" id="comments" placeholder="Comments, concerns, shit talk, etc."></textarea>
+                  <textarea name="Comments" class="form-control" id="comments" placeholder="Comments, concerns, shit talk, etc. (optional)"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-check" id="remember-section">
+                  <input name="remember" class="form-check-input" id="remember" type="checkbox" />
+                  <label for="remember" class="form-check-label">Remember me?</label>
+                </div>
+                <div class="form-group" id="forget-section">
+                  <button id="forget" class="btn btn-light">Forget me</button>
+                  <label for="forget" style="margin-left: 20px;">We remember you! Welcome back!</label>
                 </div>
               </div>
             </div>
