@@ -8,5 +8,20 @@
   "google_analytics": "G-8BPTJQVZ4B",
   "twitter_username": "Nov_Project_SF",
   "facebook_username": "NovemberProjectSF",
-  "instagram_username": "novemberprojectsf"
+  "instagram_username": "novemberprojectsf",
+  "strava_club_link": "https://www.strava.com/clubs/sfhillclimbchallenge",
+  "social": [
+    {
+      "icon": "fab fa-instagram",
+      "url": "https://instagram.com/novemberprojectsf"
+    },
+    {
+      "icon": "fab fa-facebook",
+      "url": "https://facebook.com/NovemberProjectSF"
+    },
+    {
+      "icon": "fab fa-twitter",
+      "url": "https://twitter.com/Nov_Project_SF"
+    }
+  ]
 }
