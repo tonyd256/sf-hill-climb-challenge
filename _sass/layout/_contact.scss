@@ -29,6 +29,9 @@ section#form {
       font-weight: 700;
       color: $gray-400;
     }
+    input[type=checkbox] {
+      padding: 0;
+    }
   }
   .form-control:focus {
     border-color: $primary;
