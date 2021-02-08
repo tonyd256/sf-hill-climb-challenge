@@ -120,6 +120,31 @@ $(function() {
       row += '</tr>';
       teamTable.append(row);
     }
+
+    const indiVertTable = $('#individual-vert-table tbody');
+    const indiResults = _.groupBy(results, 'id');
+    const summedResults = _.map(indiResults, function (val, key) {
+      const first = val[0];
+      return { name: first.name, team: _.find(teams, { id: key }).team, vert: _.sumBy(val, function (o) { return _.find(hills, { name: o.hill }).vert * o.reps; }) };
+    });
+
+    const indiRows = _.map(_.reverse(_.sortBy(summedResults, 'vert')), function (r) {
+      return '<tr><td>'+r.name+'</td><td>'+r.team+'</td><td>'+r.vert+'</td></tr>';
+    });
+    indiVertTable.append(indiRows);
+
+    const badassTable = $('#badass-table tbody');
+    const hillReps = _.groupBy(results, 'hill');
+    const indiHillReps = _.mapValues(hillReps, function (val) { return _.map(_.groupBy(val, 'id'), function (v, k) {;
+      return { name: v[0].name, team: _.find(teams, { id: k }).team, reps: _.sumBy(v, function (o) { return o.reps; }) };
+    })});;
+
+    const sortedHills = _.sortBy(Object.keys(indiHillReps));
+    const indiHillRows = _.map(sortedHills, function (r, k) {
+      const badass = _.reverse(_.sortBy(indiHillReps[r], 'reps'))[0];
+      return '<tr><td>'+r+'</td><td>'+badass.name+'</td><td>'+badass.team+'</td><td>'+badass.reps+'</td></tr>';
+    });
+    badassTable.append(indiHillRows);
   }, function (req, status, e) {
     console.error(e || req || 'Unknown Error Occurred');
   });

@@ -57,6 +57,16 @@ $contact-image: "{{ site.data.style.contact-image }}";
 }
 
 #hill-table {
-  height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+#individual-vert-table {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+#badass-table {
+  max-height: 500px;
   overflow-y: scroll;
 }
