@@ -1,3 +1,6 @@
+var grandslamResults;
+var modal;
+
 $(function() {
   const hillsPromise = $.Deferred();
 
@@ -145,7 +148,30 @@ $(function() {
       return '<tr><td>'+r+'</td><td>'+badass.name+'</td><td>'+badass.team+'</td><td>'+badass.reps+'</td></tr>';
     });
     badassTable.append(indiHillRows);
+
+    const grandslamTable = $('#grandslam-table tbody');
+    grandslamResults = _.map(indiResults, function (val, key) {
+      const first = val[0];
+      const hillsDone = _.groupBy(val, 'hill');
+      const hillReps = _.mapValues(hillsDone, function (vals) { return _.sumBy(vals, function (o) { return o.reps; }); });
+      const hillsNotDone = _.filter(hills, function (h) { return !hillsDone[h.name]; });
+      _.forEach(hillsNotDone, function (h) { hillReps[h.name] = 0; });
+      return { name: first.name, team: _.find(teams, { id: key }).team, hills: Object.keys(hillsDone).length, totals: hillReps };
+    });
+
+    const grandSlamRows = _.map(_.reverse(_.sortBy(grandslamResults, 'hills')), function (r) {
+      return '<tr><td><a href="javascript:showResults(\''+r.name+'\');">'+r.name+'</a></td><td>'+r.team+'</td><td>'+r.hills+'</td></tr>';
+    });
+    grandslamTable.append(grandSlamRows);
   }, function (req, status, e) {
     console.error(e || req || 'Unknown Error Occurred');
   });
 });
+
+function showResults(name) {
+  const results = _.find(grandslamResults, { name }).totals;
+  $('#grandslam-modal .modal-title').html(name);
+  $('#grandslam-modal .modal-body').html(_.map(results, function (o, k) { return k + ': ' + o; }).join('<br/>'));
+  modal = new bootstrap.Modal(document.getElementById('grandslam-modal'));
+  modal.show();
+}
